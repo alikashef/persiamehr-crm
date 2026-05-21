@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-vazir: Vazirmatn;
+  --background: 228 20% 8%;
+  --foreground: 224 18% 92%;
+  --card: 226 21% 12%;
+  --card-foreground: 224 18% 92%;
+  --primary: 217 91% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 225 22% 16%;
+  --secondary-foreground: 224 18% 92%;
+  --muted: 225 18% 20%;
+  --muted-foreground: 229 12% 55%;
+  --accent: 231 22% 21%;
+  --accent-foreground: 224 18% 92%;
+  --destructive: 0 83% 67%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 228 31% 24%;
+  --input: 228 31% 24%;
+  --ring: 217 91% 65%;
+  --radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  direction: rtl;
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-vazir), Tahoma, Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+input[dir="ltr"],
+.ltr {
+  direction: ltr;
+}
+
+@media print {
+  aside,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
