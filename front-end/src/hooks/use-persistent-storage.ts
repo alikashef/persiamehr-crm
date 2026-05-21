@@ -56,7 +56,7 @@ async function saveServer<T>(key: string, value: T) {
         body: JSON.stringify(full),
       });
     } catch {
-      // Local storage remains the optimistic source if the PHP backend is absent.
+      // Local storage remains the optimistic source if the API is unavailable.
     }
   }, 300);
 }

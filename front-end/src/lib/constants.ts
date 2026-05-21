@@ -17,7 +17,7 @@ export const defaultSmsConfig: SmsConfig = {
   waApiToken: "",
 };
 
-export const API_URL = "../back-end/api.php";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "/api/";
 
 export const AUTH_STORAGE_KEY = "pm_auth_session";
 

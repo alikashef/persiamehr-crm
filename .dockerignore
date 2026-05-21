@@ -1,0 +1,12 @@
+.git/
+.next/
+node_modules/
+front-end/.next/
+front-end/node_modules/
+front-end/tsconfig.tsbuildinfo
+
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
