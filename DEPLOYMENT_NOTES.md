@@ -21,13 +21,17 @@ Do not overwrite, stop, restart, or redeploy `persiamehr-main` when deploying th
 - Frontend process: `persiamehr-crm`
 - Frontend port: `127.0.0.1:3001`
 - Public route: `/crm`
-- Current state: frontend-only
+- Backend process/service target: `persiamehr-crm-backend`
+- Backend port target: `127.0.0.1:8001`
+- Public API route target: `/crm-api/`
+- Public admin route target: `/crm-admin/`
 
 The CRM frontend is built with Next.js `basePath=/crm`.
+The CRM frontend should use `NEXT_PUBLIC_API_URL=/crm-api/state/`.
 
 ## Future CRM backend plan
 
-When adding or deploying a backend for this CRM, it must be independent from the main app backend.
+The CRM backend must be independent from the main app backend.
 
 Recommended backend separation:
 
@@ -35,9 +39,9 @@ Recommended backend separation:
 - CRM backend process/service name: `persiamehr-crm-backend`
 - CRM backend port: `127.0.0.1:8001`
 - CRM public API route: `/crm-api/`
-- Optional CRM admin route: `/crm-admin/`
+- CRM admin route: `/crm-admin/`
 
-The CRM frontend API URL should be changed to `/crm-api/` when the CRM backend exists.
+The CRM frontend API URL must be `/crm-api/state/` for the current local-storage-compatible sync endpoint.
 
 ## Nginx routing target
 
@@ -66,4 +70,3 @@ Before deploying CRM changes:
    - `http://127.0.0.1:3000/`
    - `http://127.0.0.1:3001/crm`
    - future `http://127.0.0.1:8001/`
-

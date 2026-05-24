@@ -1,0 +1,45 @@
+services:
+  crm-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${CRM_POSTGRES_DB:-persiamehr_crm}
+      POSTGRES_USER: ${CRM_POSTGRES_USER:-persiamehr_crm}
+      POSTGRES_PASSWORD: ${CRM_POSTGRES_PASSWORD:-persiamehr_crm_change_me}
+    volumes:
+      - crm_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${CRM_POSTGRES_USER:-persiamehr_crm} -d ${CRM_POSTGRES_DB:-persiamehr_crm}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  crm-backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    environment:
+      DEBUG: ${CRM_DEBUG:-False}
+      SECRET_KEY: ${CRM_SECRET_KEY:-django-insecure-change-me}
+      ALLOWED_HOSTS: ${CRM_ALLOWED_HOSTS:-localhost,127.0.0.1,87.107.12.71,persiamehr.com,www.persiamehr.com}
+      CSRF_TRUSTED_ORIGINS: ${CRM_CSRF_TRUSTED_ORIGINS:-http://87.107.12.71,https://persiamehr.com,https://www.persiamehr.com}
+      CORS_ALLOWED_ORIGINS: ${CRM_CORS_ALLOWED_ORIGINS:-}
+      POSTGRES_DB: ${CRM_POSTGRES_DB:-persiamehr_crm}
+      POSTGRES_USER: ${CRM_POSTGRES_USER:-persiamehr_crm}
+      POSTGRES_PASSWORD: ${CRM_POSTGRES_PASSWORD:-persiamehr_crm_change_me}
+      POSTGRES_HOST: crm-db
+      POSTGRES_PORT: 5432
+    depends_on:
+      crm-db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8001:8001"
+    volumes:
+      - crm_staticfiles:/app/staticfiles
+      - crm_media:/app/media
+
+volumes:
+  crm_postgres_data:
+  crm_staticfiles:
+  crm_media:
