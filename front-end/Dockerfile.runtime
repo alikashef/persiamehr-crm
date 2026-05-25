@@ -3,7 +3,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
-ENV NEXT_PUBLIC_API_URL=/api/
+ENV NEXT_PUBLIC_API_URL=/crm-api/state/
+ENV NEXT_PUBLIC_BASE_PATH=/crm
 COPY .next/standalone ./
 COPY .next/static ./.next/static
 EXPOSE 3000

@@ -4,9 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/api/}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/crm-api/state/}
+        NEXT_PUBLIC_BASE_PATH: ${NEXT_PUBLIC_BASE_PATH:-/crm}
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/api/}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/crm-api/state/}
+      NEXT_PUBLIC_BASE_PATH: ${NEXT_PUBLIC_BASE_PATH:-/crm}
     ports:
       - "127.0.0.1:3001:3000"
