@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export function Table({ className, ...props }: React.TableHTMLAttributes<HTMLTableElement>) {
-  return <table className={cn("w-full caption-bottom border-collapse text-sm", className)} {...props} />;
+  return <table className={cn("w-full min-w-max caption-bottom border-collapse text-sm", className)} {...props} />;
 }
 
 export function TableHeader({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {
@@ -18,9 +18,9 @@ export function TableRow({ className, ...props }: React.HTMLAttributes<HTMLTable
 }
 
 export function TableHead({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th className={cn("h-10 bg-secondary px-3 text-right align-middle text-xs font-semibold text-muted-foreground", className)} {...props} />;
+  return <th className={cn("h-10 whitespace-nowrap bg-secondary px-3 text-right align-middle text-xs font-semibold text-muted-foreground", className)} {...props} />;
 }
 
 export function TableCell({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {
-  return <td className={cn("px-3 py-2 align-middle text-xs", className)} {...props} />;
+  return <td className={cn("whitespace-nowrap px-3 py-2 align-middle text-xs", className)} {...props} />;
 }

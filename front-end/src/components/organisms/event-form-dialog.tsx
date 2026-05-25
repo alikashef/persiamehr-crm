@@ -60,7 +60,7 @@ export function EventFormDialog({ open, initial, contact, contacts, events, onCl
       <Field label="شرح رویداد *" className="mt-3"><Textarea value={form.description} onChange={(event) => set("description", event.target.value)} /></Field>
       <Field label="نتیجه" className="mt-3"><Input value={form.result || ""} onChange={(event) => set("result", event.target.value)} /></Field>
       <Field label="تگ‌ها" className="mt-3"><TagInput tags={form.tags || []} events={events} onChange={(tags) => set("tags", tags)} /></Field>
-      <div className="mt-5 flex justify-end gap-2">
+      <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
         <Button type="button" variant="outline" onClick={onClose}>انصراف</Button>
         <Button type="button" onClick={() => {
           if (!form.description.trim()) return;

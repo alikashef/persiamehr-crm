@@ -14,7 +14,7 @@ export default function SmsLog() {
     <>
       <PageHeader title="وضعیت ارسال" icon={ScrollText} />
       {log.length === 0 ? <EmptyState>هنوز پیامی ارسال نشده.</EmptyState> : (
-        <Card className="overflow-hidden">
+        <Card className="overflow-x-auto">
           <Table>
             <TableHeader><TableRow><TableHead>تاریخ</TableHead><TableHead>ساعت</TableHead><TableHead>نام</TableHead><TableHead>شرکت</TableHead><TableHead>شماره</TableHead><TableHead>کانال</TableHead><TableHead>متن</TableHead><TableHead>وضعیت</TableHead></TableRow></TableHeader>
             <TableBody>

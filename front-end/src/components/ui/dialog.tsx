@@ -15,12 +15,12 @@ export function Dialog({ open, title, children, onClose, className }: DialogProp
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 p-2 backdrop-blur-sm sm:items-center sm:p-3"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <section className={cn("max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-border bg-card p-5 shadow-2xl", className)}>
+      <section className={cn("max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-border bg-card p-3 shadow-2xl sm:p-5", className)}>
         <header className="mb-4 flex items-center justify-between gap-3">
           <h2 className="text-sm font-bold">{title}</h2>
           <Button type="button" variant="ghost" size="icon" onClick={onClose} aria-label="بستن">

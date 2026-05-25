@@ -49,14 +49,14 @@ export default function Events() {
           <Button type="button" onClick={() => { setEditing(null); setModal(true); }}><Plus className="h-4 w-4" /> رویداد جدید</Button>
         </>
       } />
-      <div className="mb-4 grid rounded-md bg-secondary p-1 md:grid-cols-3">
+      <div className="mb-4 grid rounded-md bg-secondary p-1 sm:grid-cols-3">
         {[["all", "همه"], ["today", "تماس‌های امروز"], ["next", "پیگیری‌های امروز"]].map(([key, label]) => (
           <button key={key} type="button" className={`rounded px-3 py-2 text-xs font-semibold ${filter === key ? "bg-muted text-primary" : "text-muted-foreground"}`} onClick={() => setFilter(key as "all" | "today" | "next")}>{label}</button>
         ))}
       </div>
       <SearchBox value={search} onChange={setSearch} placeholder="جستجو: تگ، شرح رویداد، نتیجه، نام مخاطب..." />
       {filtered.length === 0 ? <EmptyState>رویدادی یافت نشد</EmptyState> : (
-        <Card className="overflow-hidden">
+        <Card className="overflow-x-auto">
           <Table>
             <TableHeader><TableRow><TableHead>تاریخ</TableHead><TableHead>مخاطب</TableHead><TableHead>شرکت</TableHead><TableHead>شرح</TableHead><TableHead>نتیجه</TableHead><TableHead>تگ‌ها</TableHead><TableHead>پیگیری</TableHead><TableHead>عملیات</TableHead></TableRow></TableHeader>
             <TableBody>

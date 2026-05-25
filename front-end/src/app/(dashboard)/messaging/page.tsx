@@ -39,14 +39,14 @@ export default function Messaging() {
           {tab.endsWith("bulk") ? "ارسال گروهی" : "ارسال آزاد"}
         </Button>
       } />
-      <div className="mb-4 grid rounded-md bg-secondary p-1 md:grid-cols-4">
+      <div className="mb-4 grid rounded-md bg-secondary p-1 sm:grid-cols-2 lg:grid-cols-4">
         {[["sms", "پیامک تکی"], ["sms-bulk", "پیامک گروهی"], ["wa", "واتس‌اپ تکی"], ["wa-bulk", "واتس‌اپ گروهی"]].map(([key, label]) => (
           <button key={key} type="button" className={`rounded px-3 py-2 text-xs font-semibold ${tab === key ? "bg-muted text-primary" : "text-muted-foreground"}`} onClick={() => setTab(key as MessagingTab)}>{label}</button>
         ))}
       </div>
       <SearchBox value={search} onChange={setSearch} placeholder="جستجو: نام، شرکت، شغل، تخصص، شهر، تگ..." />
       {filtered.length === 0 ? <EmptyState>مخاطبی یافت نشد</EmptyState> : (
-        <Card className="overflow-hidden">
+        <Card className="overflow-x-auto">
           <Table>
             <TableHeader><TableRow><TableHead>نام</TableHead><TableHead>شرکت</TableHead><TableHead>شغل/تخصص</TableHead><TableHead>موبایل</TableHead><TableHead>ارسال</TableHead></TableRow></TableHeader>
             <TableBody>

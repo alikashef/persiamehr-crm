@@ -54,7 +54,7 @@ export default function Contacts() {
           <Button type="button" variant="warning" onClick={() => setBulkSms(true)}><Users className="h-4 w-4" /> پیامک گروهی</Button>
           <Button type="button" variant="outline" onClick={() => window.print()}><Printer className="h-4 w-4" /> چاپ</Button>
           <Button type="button" variant="outline" onClick={doExport}><FileDown className="h-4 w-4" /> اکسل</Button>
-          <label className="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-border bg-card px-4 text-xs font-semibold hover:bg-accent">
+          <label className="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-border bg-card px-3 text-xs font-semibold hover:bg-accent sm:px-4">
             <FileUp className="h-4 w-4" />
             ایمپورت اکسل
             <input type="file" accept=".csv" className="hidden" onChange={(event) => {
@@ -73,7 +73,7 @@ export default function Contacts() {
       } />
       <SearchBox value={search} onChange={setSearch} placeholder="جستجو: نام، شرکت، شغل، تخصص، شهر، استان..." />
       {filtered.length === 0 ? <EmptyState>مخاطبی یافت نشد</EmptyState> : (
-        <Card className="overflow-hidden">
+        <Card className="overflow-x-auto">
           <Table>
             <TableHeader><TableRow><TableHead>کد</TableHead><TableHead>نام</TableHead><TableHead>شرکت</TableHead><TableHead>شغل</TableHead><TableHead>تخصص</TableHead><TableHead>موبایل</TableHead><TableHead>شهر</TableHead><TableHead>عملیات</TableHead></TableRow></TableHeader>
             <TableBody>
@@ -117,7 +117,7 @@ export default function Contacts() {
             </div>
             <Info label="آدرس" value={detail.address} className="mt-3" />
             <div className="my-4 border-t border-border" />
-            <div className="mb-3 flex items-center justify-between">
+            <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-sm font-bold">رویدادها ({detailEvents.length})</span>
               <Button type="button" variant="outline" size="sm" onClick={() => setEventContact(detail)}><Plus className="h-4 w-4" /> رویداد جدید</Button>
             </div>

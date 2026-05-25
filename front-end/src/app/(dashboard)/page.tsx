@@ -84,7 +84,7 @@ export default function Dashboard() {
       </section>
 
       <section className="mt-5">
-        <Card className="overflow-hidden">
+        <Card className="overflow-x-auto">
           <CardContent>
             <SectionHeading icon={Users} title="آخرین مخاطبین" subtitle="نمای سریع اطلاعات" />
           </CardContent>

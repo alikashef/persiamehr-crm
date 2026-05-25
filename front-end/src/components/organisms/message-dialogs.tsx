@@ -95,7 +95,7 @@ export function SingleMessageDialog({ open, mode, contact, config, onClose, onLo
       )}
       <div className="mt-3 min-h-16 whitespace-pre-wrap rounded-md border border-border bg-secondary p-3 text-sm text-muted-foreground">{text || "پیش‌نمایش..."}</div>
       {status && <div className={`mt-3 rounded-md p-2 text-xs ${status.ok ? "bg-emerald-500/10 text-emerald-300" : "bg-red-500/10 text-red-300"}`}>{status.msg}</div>}
-      <div className="mt-5 flex justify-end gap-2">
+      <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
         <Button type="button" variant="outline" onClick={onClose}>بستن</Button>
         <Button type="button" variant="success" onClick={send} disabled={sending}>
           {mode === "sms" ? <Send className="h-4 w-4" /> : <MessageCircle className="h-4 w-4" />}
@@ -157,7 +157,7 @@ export function BulkMessageDialog({ open, mode, contacts = [], config, onClose, 
         <>
           <Field label="متن پیام *"><Textarea value={text} onChange={(event) => setText(event.target.value)} /></Field>
           <div className="mt-3 min-h-16 whitespace-pre-wrap rounded-md border border-border bg-secondary p-3 text-sm text-muted-foreground">{text || "پیش‌نمایش..."}</div>
-          <div className="my-3 flex items-center justify-between gap-3">
+          <div className="my-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <span className="text-xs text-muted-foreground">گیرندگان ({selected.length} نفر)</span>
             <Button type="button" variant="outline" size="sm" onClick={() => setSelected(selected.length === contacts.length ? [] : contacts.map((contact) => contact.id))}>
               {selected.length === contacts.length ? "لغو همه" : "انتخاب همه"}
@@ -165,15 +165,15 @@ export function BulkMessageDialog({ open, mode, contacts = [], config, onClose, 
           </div>
           <div className="max-h-56 overflow-y-auto rounded-md border border-border">
             {contacts.map((contact) => (
-              <button type="button" key={contact.id} className="flex w-full items-center gap-3 border-b border-border px-3 py-2 text-right text-xs hover:bg-muted/50" onClick={() => toggle(contact.id)}>
+              <button type="button" key={contact.id} className="grid w-full grid-cols-[auto_minmax(0,1fr)] gap-2 border-b border-border px-3 py-2 text-right text-xs hover:bg-muted/50 sm:flex sm:items-center sm:gap-3" onClick={() => toggle(contact.id)}>
                 <input type="checkbox" checked={selected.includes(contact.id)} onChange={() => toggle(contact.id)} onClick={(event) => event.stopPropagation()} />
                 <span className="flex-1">{contact.name}</span>
-                <span className="text-muted-foreground">{contact.company}</span>
-                <span className="ltr text-muted-foreground">{contact.phone1}</span>
+                <span className="col-start-2 truncate text-muted-foreground">{contact.company}</span>
+                <span className="ltr col-start-2 text-right text-muted-foreground sm:text-left">{contact.phone1}</span>
               </button>
             ))}
           </div>
-          <div className="mt-5 flex justify-end gap-2">
+          <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
             <Button type="button" variant="outline" onClick={onClose}>انصراف</Button>
             <Button type="button" variant="success" onClick={send} disabled={sending || !text.trim() || selected.length === 0}>
               {sending ? `ارسال... (${results.length}/${selected.length})` : `ارسال به ${selected.length} نفر`}
@@ -188,14 +188,14 @@ export function BulkMessageDialog({ open, mode, contacts = [], config, onClose, 
           </div>
           <div className="max-h-72 overflow-y-auto rounded-md border border-border">
             {results.map((result, index) => (
-              <div key={`${result.phone}-${index}`} className="grid grid-cols-3 gap-2 border-b border-border px-3 py-2 text-xs">
+              <div key={`${result.phone}-${index}`} className="grid gap-1 border-b border-border px-3 py-2 text-xs sm:grid-cols-3 sm:gap-2">
                 <span>{result.name}</span>
                 <span className="ltr text-muted-foreground">{result.phone}</span>
                 <Badge variant={result.ok ? "success" : "danger"}>{result.ok ? "OK" : "FAIL"}</Badge>
               </div>
             ))}
           </div>
-          <div className="mt-5 flex justify-end"><Button type="button" variant="outline" onClick={onClose}>بستن</Button></div>
+          <div className="mt-5 flex justify-end"><Button type="button" variant="outline" className="w-full sm:w-auto" onClick={onClose}>بستن</Button></div>
         </>
       )}
     </Dialog>

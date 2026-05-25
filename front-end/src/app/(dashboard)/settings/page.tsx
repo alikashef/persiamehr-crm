@@ -41,7 +41,7 @@ export default function Settings() {
         <Field label="API Token"><Input dir="ltr" value={form.waApiToken} onChange={(event) => set("waApiToken", event.target.value)} /></Field>
         <p className="text-[11px] text-muted-foreground">پارامترهای ارسال: to (شماره)، message (متن)</p>
       </CardContent></Card>
-      <div className="mt-4 flex items-center gap-3">
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Button type="button" onClick={save}><Save className="h-4 w-4" /> ذخیره تنظیمات</Button>
         {saved && <span className="text-xs text-emerald-300">ذخیره شد</span>}
       </div>

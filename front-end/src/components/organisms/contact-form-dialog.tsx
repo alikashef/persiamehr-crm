@@ -104,7 +104,7 @@ export function ContactFormDialog({ open, initial, contacts, customJobs, customS
       </div>
       <Field label="آدرس کامل" className="mt-3"><Textarea value={form.address || ""} onChange={(event) => set("address", event.target.value)} /></Field>
       <Field label="کد پستی" className="mt-3 max-w-48"><Input dir="ltr" value={form.postalCode || ""} onChange={(event) => set("postalCode", event.target.value)} /></Field>
-      <div className="mt-5 flex justify-end gap-2">
+      <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
         <Button type="button" variant="outline" onClick={onClose}>انصراف</Button>
         <Button type="button" onClick={() => {
           if (!form.name.trim()) return;

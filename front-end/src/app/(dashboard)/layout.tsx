@@ -38,9 +38,9 @@ function DashboardContent({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
+    <div className="flex min-h-screen flex-col bg-background md:h-screen md:flex-row md:overflow-hidden">
       <AppSidebar contactsCount={contacts.length} eventsCount={events.length} />
-      <main className="flex-1 overflow-y-auto p-5">{children}</main>
+      <main className="min-w-0 flex-1 p-3 sm:p-4 md:overflow-y-auto md:p-5">{children}</main>
     </div>
   );
 }
