@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-vazir: Vazirmatn;
+  --font-vazir: "Vazirmatn";
   --background: 228 20% 8%;
   --foreground: 224 18% 92%;
   --card: 226 21% 12%;
